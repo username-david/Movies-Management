@@ -58,6 +58,9 @@ bin/
 *~
 ~*
 
+# vscode
+.vscode/
+
 # intellij / android studio
 *.iml
 *.ipr
