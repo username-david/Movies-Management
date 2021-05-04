@@ -26,7 +26,7 @@
 hs_err_pid*
 
 # Maven
-target/
+*/target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -38,6 +38,7 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 */src/main/java/META-INF/
+*/src/main/webapp/WEB-INF/classes/
 *.releaseBackup
 *.versionsBackup
 bin/
