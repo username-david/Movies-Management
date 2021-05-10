@@ -1,0 +1,50 @@
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                      https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+  version="5.0"
+  metadata-complete="true">
+  
+  <!-- Authentication. -->
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <form-login-config>
+      <form-login-page>/loginPage.html</form-login-page>
+      <form-error-page>/loginErrorPage.html</form-error-page>
+    </form-login-config>
+  </login-config>
+
+  <!-- Roles. -->
+  <security-role><role-name>Admin</role-name></security-role>
+  <security-role><role-name>Member</role-name></security-role>
+  <security-role><role-name>Guest</role-name></security-role>
+
+  <!-- Authorization. -->
+  <!-- 
+    Just users in roles declared in <auth-constraint> tags
+    are able to do http methods listed in <http-method> tags
+    to fetch resources having URLs specified in <url-pattern> tags
+    in secure transmission.
+  -->
+  <security-constraint>
+
+    <web-resource-collection>
+      <web-resource-name>Logged-in Movie Page</web-resource-name>
+      <url-pattern>/loggedInMoviePage.jsp</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+
+    <auth-constraint>
+      <role-name>Admin</role-name>
+      <role-name>Member</role-name>
+    </auth-constraint>
+
+    <!-- This portion is for secure transmission over SSL. -->
+    <!-- <user-data-constraint>
+      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint> -->
+
+  </security-constraint>
+
+</web-app>
