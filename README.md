@@ -1,0 +1,1 @@
+The tomcat-users.xml stores roles, users, and passwords for testing the log-in function. It must be located in your container directory: apache-tomcat-[version]/conf/
