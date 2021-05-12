@@ -1,1 +1,0 @@
-This is the movie page showed when users log in.
