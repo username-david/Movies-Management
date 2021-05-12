@@ -19,4 +19,13 @@
     <maven.compiler.target>14</maven.compiler.target>
   </properties>
 
+  <dependencies>
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>5.0.0</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
 </project>
