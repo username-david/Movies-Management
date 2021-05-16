@@ -50,7 +50,7 @@
   <!-- This servlet is for dispatching authentication to home page  -->
   <servlet>
     <servlet-name>Login Process</servlet-name>
-    <servlet-class>com.example.management.controller.LoginDispatcher</servlet-class>
+    <servlet-class>com.example.management.controller.LoginHandler</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Login Process</servlet-name>
