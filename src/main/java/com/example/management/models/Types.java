@@ -3,7 +3,7 @@ package com.example.management.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "movie_types")
+@Table(name = "types")
 public class Types extends BaseEntity{
 
     private String type;
@@ -17,7 +17,7 @@ public class Types extends BaseEntity{
         return type;
     }
 
-    public void setType(MovieTypes type) {
-        this.type = type.toString();
+    public void setType(String type) {
+        this.type = type;
     }
 }

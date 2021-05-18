@@ -10,10 +10,9 @@ public class main {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        Types type1 = new Types();
-        type1.setType(MovieTypes.COMEDY);
+        Types type1 = new Types("Comedy");
 
-        Types type2 = new Types(MovieTypes.DETECTIVE.toString());
+        Types type2 = new Types("Horror");
         Movie movie = new Movie.Builder("Lord").description("nothing").type(type1).type(type2).rates(5).build();
 
         Rate rate = new Rate();
