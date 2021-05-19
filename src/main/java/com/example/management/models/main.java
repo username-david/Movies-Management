@@ -1,33 +1,34 @@
 package com.example.management.models;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import com.example.management.dao.MovieDao;
+import com.example.management.dao.TypeDao;
 
 public class main {
-    public static void main(String [] args){
+    public static void main(String[] args) {
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        MovieDao movieDao = new MovieDao();
+        TypeDao typeDao = new TypeDao();
 
         Types type1 = new Types("Comedy");
 
         Types type2 = new Types("Horror");
+        typeDao.create(type1);
+        typeDao.create(type2);
+
         Movie movie = new Movie.Builder("Lord").description("nothing").type(type1).type(type2).rates(5).build();
 
-        Rate rate = new Rate();
-        rate.setMovie(movie);
-        rate.setRatingValue(5);
+        System.out.println("Before");
+        movieDao.create(movie);
+        System.out.println(new MovieDao().findAll().size());
 
-        entityManager.getTransaction().begin();
+        //test update
+        movie.setDescription("changed");
+        movieDao.update(movie);
 
-        entityManager.persist(type1);
-        entityManager.persist(type2);
-        entityManager.persist(movie);
-        entityManager.persist(rate);
+        System.out.println(new MovieDao().findOne(movie.getId()).getDescription());
 
-        entityManager.getTransaction().commit();
-        entityManagerFactory.close();
-
+        movieDao.findOne(1);
+        movieDao.delete(movie);
+        System.out.println("After");
     }
 }
