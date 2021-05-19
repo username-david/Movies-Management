@@ -4,7 +4,9 @@
                       https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
   version="5.0"
   metadata-complete="true">
-  
+  <welcome-file-list>
+    <welcome-file>loginPage.html</welcome-file>
+  </welcome-file-list>
   <!-- Authentication. -->
   <login-config>
     <auth-method>FORM</auth-method>
@@ -50,7 +52,7 @@
   <!-- This servlet is for dispatching authentication to home page  -->
   <servlet>
     <servlet-name>Login Process</servlet-name>
-    <servlet-class>com.example.management.controller.LoginHandler</servlet-class>
+    <servlet-class>com.example.management.controller.LoginDispatcher</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Login Process</servlet-name>
