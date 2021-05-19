@@ -1,31 +1,19 @@
 package com.example.management.models;
 
-import com.example.management.dao.EntityDao;
-
 import javax.persistence.*;
 import java.util.*;
-
 /**
  * Movie
  */
 @Entity
 @Table(name = "movie")
-public class Movie extends BaseEntity {
+public class Movie extends BaseEntity{
 
     private String name;
     private String description;
     private int year;
     private Date releaseDay;
     private String image;
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    protected Movie() {
-//        EntityDao<Movie> movieEntityDao = new EntityDao<>();
-//        movieEntityDao.update(new Movie.Builder("0").build());
-    }
 
     @ManyToMany
     @JoinTable(
@@ -43,32 +31,29 @@ public class Movie extends BaseEntity {
     private List<Rate> rates = new ArrayList();
 
     private Movie(Builder builder) {
+        //id = builder.id;
         this.name = builder.name;
         this.description = builder.description;
         this.year = builder.year;
         this.releaseDay = builder.releaseDay;
         this.image = builder.image;
         this.typesSet = builder.typesSet;
-        this.rates = builder.rates;
-    }
-
-    public String getDescription() {
-        return this.description;
+//        this.rates = builder.rates;
     }
 
     public static class Builder {
-        //         Required parameters
-        private int id;
+//         Required parameters
+//        private int id;
         private String name;
         private String description;
         private int year;
         private Date releaseDay;
         private String image;
         private Set<Types> typesSet = new HashSet<>();
-        private ArrayList rates = new ArrayList();
+        private ArrayList rates= new ArrayList();
 
         public Builder(String name) {
-            this.id = id;
+//            this.id = id;
             this.name = name;
         }
 
@@ -105,10 +90,6 @@ public class Movie extends BaseEntity {
         // For building a real Movie instance.
         public Movie build() {
             return new Movie(this);
-        }
-
-        public int getId() {
-            return id;
         }
     }
 }
