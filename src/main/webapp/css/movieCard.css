@@ -2,7 +2,7 @@ td {
   border: 2px solid black;
   padding: 5px;
 }
-#tdBtn {
+#td-btn {
   padding: 0;
   border: none;
 }
@@ -11,15 +11,11 @@ button {
   border-radius: 0;
   border: 2px solid black;
 }
-#rateBtn {
+#rate-btn {
   background-color: cornflowerblue;
 }
-#deleteBtn {
+#delete-btn {
   width: 102px;
-}
-#editBtn {
-  border-left: none;
-  border-right: none;
 }
 .checked {
   color: orange;

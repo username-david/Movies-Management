@@ -1,21 +1,25 @@
 table, #td1 {
   border: none;
 }
-#lBtn {
+#l-btn {
   float: left;
 }
-#rBtn {
+#r-btn, #r-slc {
   float: right;
 }
-#cDiv {
+#h-div {
   text-align: center;
+  height: 20px;
 }
-#bDiv {
+#btn-div {
+  margin-bottom: 20px;
+}
+#b-div {
   background-color: darkcyan; 
   height: 30px;
-  margin-top: 25px
+  margin-top: 45px
 }
-#tH2 {
+#t-h2 {
   display: inline-block; 
   margin: 0
 }
