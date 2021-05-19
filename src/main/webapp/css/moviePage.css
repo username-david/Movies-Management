@@ -1,0 +1,21 @@
+table, #td1 {
+  border: none;
+}
+#lBtn {
+  float: left;
+}
+#rBtn {
+  float: right;
+}
+#cDiv {
+  text-align: center;
+}
+#bDiv {
+  background-color: darkcyan; 
+  height: 30px;
+  margin-top: 25px
+}
+#tH2 {
+  display: inline-block; 
+  margin: 0
+}
