@@ -1,0 +1,26 @@
+td {
+  border: 2px solid black;
+  padding: 5px;
+}
+#td-btn {
+  padding: 0;
+  border: none;
+}
+button {
+  width: 91px;
+  border-radius: 0;
+  border: 2px solid black;
+}
+#rate-btn {
+  background-color: cornflowerblue;
+}
+#delete-btn {
+  width: 102px;
+}
+.checked {
+  color: orange;
+}
+img {
+  height: 300px;
+  width: 270px;
+}

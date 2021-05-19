@@ -52,11 +52,21 @@
   <!-- This servlet is for dispatching authentication to home page  -->
   <servlet>
     <servlet-name>Login Process</servlet-name>
-    <servlet-class>com.example.management.controller.LoginDispatcher</servlet-class>
+    <servlet-class>com.example.management.controller.LoginHandler</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Login Process</servlet-name>
     <url-pattern>/login.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- This servlet is for loading movies' information. -->
+  <servlet>
+    <servlet-name>Movie Loader</servlet-name>
+    <servlet-class>com.example.management.controller.MovieLoadingHandler</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Movie Loader</servlet-name>
+    <url-pattern>/movies</url-pattern>
   </servlet-mapping>
 
 </web-app>
