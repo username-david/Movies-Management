@@ -1,13 +1,8 @@
 package com.example.management.models;
 
-import com.example.management.dao.EntityDao;
-
 import javax.persistence.*;
 import java.util.*;
 
-/**
- * Movie
- */
 @Entity
 @Table(name = "movie")
 public class Movie extends BaseEntity {
@@ -18,13 +13,7 @@ public class Movie extends BaseEntity {
     private Date releaseDay;
     private String image;
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     protected Movie() {
-//        EntityDao<Movie> movieEntityDao = new EntityDao<>();
-//        movieEntityDao.update(new Movie.Builder("0").build());
     }
 
     @ManyToMany
@@ -52,13 +41,7 @@ public class Movie extends BaseEntity {
         this.rates = builder.rates;
     }
 
-    public String getDescription() {
-        return this.description;
-    }
-
     public static class Builder {
-        //         Required parameters
-        private int id;
         private String name;
         private String description;
         private int year;
@@ -68,7 +51,6 @@ public class Movie extends BaseEntity {
         private ArrayList rates = new ArrayList();
 
         public Builder(String name) {
-            this.id = id;
             this.name = name;
         }
 
@@ -106,9 +88,61 @@ public class Movie extends BaseEntity {
         public Movie build() {
             return new Movie(this);
         }
+    }
 
-        public int getId() {
-            return id;
-        }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public Date getReleaseDay() {
+        return releaseDay;
+    }
+
+    public void setReleaseDay(Date releaseDay) {
+        this.releaseDay = releaseDay;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Set<Types> getTypesSet() {
+        return typesSet;
+    }
+
+    public void setTypesSet(Set<Types> typesSet) {
+        this.typesSet = typesSet;
+    }
+
+    public List<Rate> getRates() {
+        return rates;
+    }
+
+    public void setRates(List<Rate> rates) {
+        this.rates = rates;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

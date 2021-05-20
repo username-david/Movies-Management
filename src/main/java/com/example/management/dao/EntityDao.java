@@ -12,10 +12,6 @@ public abstract class EntityDao<T extends BaseEntity> {
 
     abstract Class<T> getModelClazz();
 
-    public T get(int id) {
-        return entityManager.find(getModelClazz(), id);
-    }
-
     public void update(T t) {
         entityManager.getTransaction().begin();
         entityManager.merge(t);
@@ -29,7 +25,6 @@ public abstract class EntityDao<T extends BaseEntity> {
     }
 
     public void create(T t) {
-        // call create
         entityManager.getTransaction().begin();
         entityManager.persist(t);
         entityManager.getTransaction().commit();
