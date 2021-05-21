@@ -1,11 +1,11 @@
 package com.example.management.dao;
 
-import com.example.management.models.Types;
+import com.example.management.models.Type;
 
-public class TypeDao extends EntityDao<Types> {
+public class TypeDao extends EntityDao<Type> {
 
     @Override
-    Class<Types> getModelClazz() {
-        return Types.class;
+    Class<Type> getModelClazz() {
+        return Type.class;
     }
 }
