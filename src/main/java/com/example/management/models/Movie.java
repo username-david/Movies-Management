@@ -6,25 +6,25 @@ import java.util.*;
 @Entity
 @Table(name = "movie")
 public class Movie extends BaseEntity {
-
     private String name;
     private String description;
     private int year;
     private Date releaseDay;
     private String image;
 
-    protected Movie() {
+    public Movie() {
     }
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "movie_type",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "type_id")
     )
-    private Set<Types> typesSet = new HashSet<>();
+    private Set<Type> typeSet = new HashSet<>();
 
     @OneToMany(
+            fetch = FetchType.EAGER,
             mappedBy = "movie",
             cascade = CascadeType.ALL,
             orphanRemoval = true
@@ -37,7 +37,7 @@ public class Movie extends BaseEntity {
         this.year = builder.year;
         this.releaseDay = builder.releaseDay;
         this.image = builder.image;
-        this.typesSet = builder.typesSet;
+        this.typeSet = builder.typeSet;
         this.rates = builder.rates;
     }
 
@@ -47,7 +47,7 @@ public class Movie extends BaseEntity {
         private int year;
         private Date releaseDay;
         private String image;
-        private Set<Types> typesSet = new HashSet<>();
+        private Set<Type> typeSet = new HashSet<>();
         private ArrayList rates = new ArrayList();
 
         public Builder(String name) {
@@ -74,8 +74,8 @@ public class Movie extends BaseEntity {
             return this;
         }
 
-        public Builder type(Types type) {
-            typesSet.add(type);
+        public Builder type(Type type) {
+            typeSet.add(type);
             return this;
         }
 
@@ -122,12 +122,12 @@ public class Movie extends BaseEntity {
         this.image = image;
     }
 
-    public Set<Types> getTypesSet() {
-        return typesSet;
+    public Set<Type> getTypesSet() {
+        return typeSet;
     }
 
-    public void setTypesSet(Set<Types> typesSet) {
-        this.typesSet = typesSet;
+    public void setTypesSet(Set<Type> typeSet) {
+        this.typeSet = typeSet;
     }
 
     public List<Rate> getRates() {

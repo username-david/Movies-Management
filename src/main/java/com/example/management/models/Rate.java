@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Rate extends BaseEntity{
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Movie movie;
 
     private int ratingValue;
@@ -20,6 +20,8 @@ public class Rate extends BaseEntity{
     public void setMovie(Movie movie) {
         this.movie = movie;
     }
+
+    public int getMovieId(){ return movie.getId();}
 
     public int getRatingValue() {
         return ratingValue;
