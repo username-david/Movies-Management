@@ -34,10 +34,8 @@ public abstract class EntityDao<T extends BaseEntity> {
         return entityManager.find(getModelClazz(), id);
     }
 
-    public List<T> findAll(){
+    public List<T> getAll(){
         return entityManager.createQuery( "from " + getModelClazz().getName())
                 .getResultList();
     }
-
-
 }

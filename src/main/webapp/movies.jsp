@@ -35,13 +35,10 @@
 
       <!-- <%-- Type selection. --%> -->
       <form action="">
-        <select name="cars" id="r-slc">
-          <option value="action">Action</option>
-          <option value="cartoon">Cartoon</option>
-          <option value="family">Family</option>
-          <option value="horror">Horror</option>
-          <option value="adventure">Adventure</option>
-          <option value="comedy">Comedy</option>
+        <select name="types" id="r-slc">
+          <core:forEach var="type" items="${types}">
+            <option value="${type.name}">${type.name}</option>
+          </core:forEach>
         </select>
       </form>
 
@@ -55,7 +52,7 @@
       <core:forEach var="movie" items="${movies}" varStatus="movieLoopCount" >
         
         <!-- <%-- For getting the rating of a particular movie. --%> -->
-        <core:set var="rating" value="${ratings[movie.id]}"/>  
+        <core:set var="rating" value="${movie.ratingAvg}"/>
 
         <!-- <%-- For showing only four movies per row. --%> -->
         <core:if test="${movieLoopCount.count-1 % 4 == 0}">
