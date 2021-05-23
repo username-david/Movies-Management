@@ -1,0 +1,47 @@
+input {
+  margin:10px 0;
+}
+#page_name {
+  text-align: center;
+  font-family: cursive;
+  font-size: 45px;
+  margin-bottom: 20px;
+}
+label {
+  font-size: larger; 
+  font-family: cursive;
+  padding-right: 30px;
+}
+#top_left{
+  text-align: left; 
+  vertical-align: top;
+}
+textarea {
+  resize: none;
+}
+#type_div {
+  column-count: 2;
+  column-gap: 40px;
+}
+ul {
+  line-height: 200%;
+  list-style-type: none;
+}
+#input_btn {
+  float: right; 
+  margin-left: 30px;
+}
+form {
+  align-content: center;
+}
+#whole {
+  margin-left: 25%;
+}
+#same_width {
+  width: 400px;
+  font-size: 15px;
+}
+td {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
