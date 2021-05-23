@@ -15,17 +15,4 @@ public class MovieDao extends EntityDao<Movie> {
     Class<Movie> getModelClazz() {
         return Movie.class;
     }
-
-    public Map<Integer, Integer> getRatings() {
-        Map<Integer, Integer> ratings = new HashMap<>();
-        List<Movie> movies = getAll();
-
-        for ( Movie movie : movies ) {
-            MovieDto movieDto = new MovieMapper().from(movie);
-            ratings.put(movie.getId(), movieDto.getRatingAvg());
-        }
-
-        return ratings;
-    }
-
 }
