@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="css/movieCard.css">
 
 <table>
+  <core:set var="id" value="${param.id}"/>
   <core:set var="name" value="${param.name}"/>
   <core:set var="image" value="${param.image}"/>
   <core:set var="rating" value="${param.rating}"/>
@@ -36,7 +37,7 @@
   <core:if test="${isValidUser}">
     <tr><td id="td-btn">
       <button id="rate-btn">Rate</button>
-      <button>Edit</button>
+      <button onclick="location.href='editForm.show?id=${id}'">Edit</button>
       <button id="delete-btn">Delete</button>
     </td></tr>
   </core:if>

@@ -4,14 +4,16 @@
                       https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
   version="5.0"
   metadata-complete="false">
+  
   <welcome-file-list>
     <welcome-file>movies</welcome-file>
   </welcome-file-list>
+  
   <!-- Authentication. -->
   <login-config>
     <auth-method>FORM</auth-method>
     <form-login-config>
-      <form-login-page>/loginPage.html</form-login-page>
+      <form-login-page>/WEB-INF/loginPage.html</form-login-page>
       <form-error-page>/loginErrorPage.html</form-error-page>
     </form-login-config>
   </login-config>
@@ -36,6 +38,33 @@
       <http-method>GET</http-method>
       <http-method>POST</http-method>
     </web-resource-collection>
+    
+    <web-resource-collection>
+      <web-resource-name>Movie Adding Form Request</web-resource-name>
+      <url-pattern>/addingForm.show</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+
+    <web-resource-collection>
+      <web-resource-name>Movie Edit Form Request</web-resource-name>
+      <url-pattern>/editForm.show</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+
+    <web-resource-collection>
+      <web-resource-name>Movie Adding</web-resource-name>
+      <url-pattern>/add.do</url-pattern>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+
+    <web-resource-collection>
+      <web-resource-name>Movie Edit</web-resource-name>
+      <url-pattern>/edit.do</url-pattern>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    
 
     <auth-constraint>
       <role-name>Admin</role-name>
@@ -49,7 +78,7 @@
 
   </security-constraint>
 
-  <!-- This servlet is for dispatching authentication to home page  -->
+  <!-- This servlet is for dispatching authentication to home page.  -->
   <servlet>
     <servlet-name>Login Process</servlet-name>
     <servlet-class>com.example.management.controller.LoginHandler</servlet-class>
@@ -57,6 +86,16 @@
   <servlet-mapping>
     <servlet-name>Login Process</servlet-name>
     <url-pattern>/login.do</url-pattern>
+  </servlet-mapping>
+
+  <!-- This servlet is for handling log-out process.  -->
+  <servlet>
+    <servlet-name>Logout Process</servlet-name>
+    <servlet-class>com.example.management.controller.LogoutHandler</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout Process</servlet-name>
+    <url-pattern>/logout.do</url-pattern>
   </servlet-mapping>
   
   <!-- This servlet is for loading movies' information. -->
@@ -67,6 +106,46 @@
   <servlet-mapping>
     <servlet-name>Movie Loader</servlet-name>
     <url-pattern>/movies</url-pattern>
+  </servlet-mapping>
+  
+  <!-- This servlet is for getting movie adding form. -->
+  <servlet>
+    <servlet-name>Movie Adding Form</servlet-name>
+    <servlet-class>com.example.management.controller.MovAddingFormReqHdlr</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Movie Adding Form</servlet-name>
+    <url-pattern>/addingForm.show</url-pattern>
+  </servlet-mapping>
+
+  <!-- This servlet is for getting movie edit form. -->
+  <servlet>
+    <servlet-name>Movie Edit Form</servlet-name>
+    <servlet-class>com.example.management.controller.MovEditFormReqHdlr</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Movie Edit Form</servlet-name>
+    <url-pattern>/editForm.show</url-pattern>
+  </servlet-mapping>
+  
+  <!-- This servlet is for adding a new movie to the database. -->
+  <servlet>
+    <servlet-name>Movie Adding</servlet-name>
+    <servlet-class>com.example.management.controller.MovieAddingHandler</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Movie Adding</servlet-name>
+    <url-pattern>/add.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- This servlet is for editing an existing movie in the database. -->
+  <servlet>
+    <servlet-name>Movie Edit</servlet-name>
+    <servlet-class>com.example.management.controller.MovieEditHandler</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Movie Edit</servlet-name>
+    <url-pattern>/edit.do</url-pattern>
   </servlet-mapping>
 
 </web-app>

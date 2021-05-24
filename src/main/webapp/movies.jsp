@@ -14,30 +14,33 @@
     <!-- <%-- Title and log in/out button. --%> -->
     <div id="h-div">
       <h1 id="t-h2">Movies</h1>
-      <button id="r-btn" onclick="location.href='login.do'">
-        
-        <!-- <%-- For checking when to show in/out. --%> -->
-        <core:choose>
-          <core:when test="${isValidUser}">Logout</core:when>
-          <core:otherwise>Login</core:otherwise>
-        </core:choose>
-        
-      </button>
+
+      <!-- <%-- For checking when to show in/out. --%> -->
+      <core:choose>
+        <core:when test="${isValidUser}">
+          <button id="r-btn" onclick="location.href='logout.do'">Logout</button>
+        </core:when>
+        <core:otherwise>
+          <button id="r-btn" onclick="location.href='login.do'">Login</button>
+        </core:otherwise>
+      </core:choose>
     </div>
 
-    <!-- <%-- Add movie button and type selection. --%> -->
+    <!-- <%-- Add movie button and genre selection. --%> -->
     <div id="btn-div">
 
       <!-- <%-- For checking whether to show the button or not. --%> -->
       <core:if test="${isValidUser}">
-        <button id="l-btn">Add a movie</button>
+        <button id="l-btn" onclick="location.href='addingForm.show'">
+          Add a movie
+        </button>
       </core:if>
 
-      <!-- <%-- Type selection. --%> -->
+      <!-- <%-- Genre selection. --%> -->
       <form action="">
-        <select name="types" id="r-slc">
-          <core:forEach var="type" items="${types}">
-            <option value="${type.name}">${type.name}</option>
+        <select name="genres" id="r-slc">
+          <core:forEach var="genre" items="${genres}">
+            <option value="${genre.name}">${genre.name}</option>
           </core:forEach>
         </select>
       </form>
@@ -52,7 +55,7 @@
       <core:forEach var="movie" items="${movies}" varStatus="movieLoopCount" >
         
         <!-- <%-- For getting the rating of a particular movie. --%> -->
-        <core:set var="rating" value="${movie.ratingAvg}"/>
+        <core:set var="rating" value="${movie.avgRating}"/>
 
         <!-- <%-- For showing only four movies per row. --%> -->
         <core:if test="${movieLoopCount.count-1 % 4 == 0}">
@@ -64,6 +67,7 @@
                 For passing the current movie's information to a movie card and import it.
               --%> -->
               <core:import url="/movieCard.jsp">
+                <core:param name="id" value='${movie.id}'/>
                 <core:param name="name" value='${movie.name}'/>
                 <core:param name="image" value='${movie.image}'/>
                 <core:param name="rating" value='${rating}'/>
