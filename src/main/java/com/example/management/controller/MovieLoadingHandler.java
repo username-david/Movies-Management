@@ -1,18 +1,15 @@
 package com.example.management.controller;
 
-import com.example.management.dao.MovieDao;
-import com.example.management.dao.TypeDao;
-import com.example.management.dto.MovieDto;
-import com.example.management.dto.MovieMapper;
-import com.example.management.models.Movie;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import com.example.management.dao.*;
+import com.example.management.dto.*;
+import com.example.management.dto.mapper.*;
+import com.example.management.model.*;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+
+import java.io.*;
+import java.util.*;
 
 /**
  * This controller is for dispatching a movie's information
@@ -20,21 +17,19 @@ import java.util.stream.Collectors;
  */
 public class MovieLoadingHandler extends HttpServlet {
 
-    private static final String MOVIES = "movies";
-    private static final String TYPES = "types";
-    private static final String MOVIES_PAGE = "/movies.jsp";
-
-    private MovieDao movieDao = new MovieDao();
+    private final String MOVIES = "movies";
+    private final String GENRES = "genres";
+    private final String MOVIE_LIST_PAGE = "/movies.jsp";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Movie> movies = movieDao.getAll();
-        MovieMapper movieMapper = new MovieMapper();
-        List<MovieDto> movieDtos = movies.stream().map(movieMapper::from)
-                .collect(Collectors.toList());
+        List<Movie> movies = new MovieDao().getAll();
+        
+        MovieDto[] movieDtos = movies.stream().map(MovieMapper::from)
+            .toArray(MovieDto[]::new);
 
         request.setAttribute(MOVIES, movieDtos);
-        request.setAttribute(TYPES, new TypeDao().getAll());
-        request.getRequestDispatcher(MOVIES_PAGE).forward(request, response);
+        request.setAttribute(GENRES, new GenreDao().getAll());
+        request.getRequestDispatcher(MOVIE_LIST_PAGE).forward(request, response);
     }
 }

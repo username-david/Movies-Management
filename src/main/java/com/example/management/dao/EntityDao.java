@@ -1,16 +1,17 @@
 package com.example.management.dao;
 
-import com.example.management.models.BaseEntity;
+import com.example.management.model.*;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.*;
 
 public abstract class EntityDao<T extends BaseEntity> {
 
-    private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
-    private EntityManager entityManager = entityManagerFactory.createEntityManager();
+    private EntityManager entityManager = 
+        Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa")
+        .createEntityManager();
 
-    abstract Class<T> getModelClazz();
+    abstract Class<T> getModelClass();
 
     public void update(T t) {
         entityManager.getTransaction().begin();
@@ -30,12 +31,13 @@ public abstract class EntityDao<T extends BaseEntity> {
         entityManager.getTransaction().commit();
     }
 
-    public T findOne(int id) {
-        return entityManager.find(getModelClazz(), id);
+    public T getById(int id) {
+        return entityManager.find(getModelClass(), id);
     }
 
-    public List<T> getAll(){
-        return entityManager.createQuery( "from " + getModelClazz().getName())
-                .getResultList();
+    public List<T> getAll() {
+        return entityManager
+            .createQuery("from " + getModelClass().getName())
+            .getResultList();
     }
 }

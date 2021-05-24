@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/loginPage.css">
+  </head>
+  <body>
+    <div class="login-form">
+      <!-- 
+          More details about Users, Roles, Authentication, and Authorization in: 
+          /src/main/WEB-INF/web.xml; /tomcat-users.xml (this file must be located 
+          in apache-tomcat-[version]/conf/)
+      -->
+      <form action="j_security_check" method="post">
+        <h2 class="text-center">Log in</h2> 
+        <div class="form-group">
+          <i class="fa fa-user fa-lg"></i>
+          <input type="text" class="form-control" placeholder="Username" required="required" name="j_username">
+        </div>
+
+        <div class="form-group">
+          <span class="input-group-text">
+            <i class="fa fa-lock fa-lg"></i>
+          </span>
+          <input type="password" class="form-control" placeholder="Password" required="required" name="j_password"> 
+        </div>
+        
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block">Log in</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

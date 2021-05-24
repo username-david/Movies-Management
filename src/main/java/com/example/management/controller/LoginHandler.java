@@ -1,10 +1,8 @@
 package com.example.management.controller;
 
-import java.io.IOException;
+import java.io.*;
 
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 
 public class LoginHandler extends HttpServlet {
     @Override
