@@ -1,3 +1,4 @@
+/* LESS */
 td {
   border: 2px solid black;
   padding: 5px;
@@ -6,12 +7,12 @@ td {
   padding: 0;
   border: none;
 }
-button, .button {
+.button {
   width: 91px;
   border-radius: 0;
   border: 2px solid black;
 }
-#rate-btn {
+.rate_btn {
   background-color: cornflowerblue;
 }
 .checked {

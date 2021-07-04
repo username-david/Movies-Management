@@ -133,6 +133,16 @@
     <url-pattern>/editForm.show</url-pattern>
   </servlet-mapping>
   
+  <!-- This servlet is for getting movie rating form. -->
+  <servlet>
+    <servlet-name>Movie Rating Form</servlet-name>
+    <servlet-class>com.example.management.controller.MovRatingFormReqHdlr</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Movie Rating Form</servlet-name>
+    <url-pattern>/ratingForm.show</url-pattern>
+  </servlet-mapping>
+  
   <!-- This servlet is for adding a new movie to the database. -->
   <servlet>
     <servlet-name>Movie Adding</servlet-name>
@@ -162,5 +172,14 @@
     <servlet-name>Movie Deleting</servlet-name>
     <url-pattern>/delete.do</url-pattern>
   </servlet-mapping>
-
+  
+  <!-- This servlet is for rating an existing movie in the database. -->
+  <servlet>
+    <servlet-name>Movie Rating</servlet-name>
+    <servlet-class>com.example.management.controller.MovieRatingHandler</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Movie Rating</servlet-name>
+    <url-pattern>/rate.do</url-pattern>
+  </servlet-mapping>
 </web-app>
