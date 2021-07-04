@@ -30,7 +30,11 @@
   <core:if test="${isValidUser}">
     <tr>
       <td id="td-btn">
-        <button id="rate-btn">Rate</button>
+        <form action="ratingForm.show" method="post">
+          <input type="hidden" name="isValidUser" value="${isValidUser}">
+          <input type="hidden" name="movieId" value="${id}">
+          <input class="button rate_btn" type="submit" value="Rate">
+        </form>
       </td>
       <td id="td-btn">
         <form action="editForm.show" method="post">

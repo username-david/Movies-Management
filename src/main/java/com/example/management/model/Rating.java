@@ -10,6 +10,13 @@ public class Rating extends BaseEntity{
 
     private byte ratingValue;
 
+    public Rating() {}
+
+    public Rating(Movie movie, byte ratingValue) {
+        this.movie = movie;
+        this.ratingValue = ratingValue;
+    }
+
     public Movie getMovie() {
         return movie;
     }

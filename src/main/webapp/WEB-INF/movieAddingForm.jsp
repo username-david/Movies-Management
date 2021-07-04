@@ -13,6 +13,9 @@
       <core:param name="isValidUser" value='${isValidUser}'/>
     </core:import>
 
+    <!-- <%-- Color bar. --%> -->
+    <div style="height: 30px; background-color: darkcyan; "></div>
+
     <h1 id="page_name">${formType} Movie</h1>
     <div id="whole">
 
