@@ -35,22 +35,15 @@ public class MovieEditHandler extends HttpServlet {
 
         // If there is a new uploaded image file.
         if (fileName != null && !fileName.equals("")) {
-            String downloadFolder = getServletContext().getRealPath("") 
-                + MovieAddingHandler.DOWNLOAD_DIR + File.separator;
+            String downloadPath = getServletContext().getRealPath("") 
+                + MovieAddingHandler.DOWNLOAD_FOLDER + File.separator;
             
-            String currentImageName = editedMovie.getImage().split("/")[1];
-            
-            // If the current image is not the default image, 
-            // delete it from the server.
-            if (!currentImageName.equals(MovieAddingHandler.DEFAULT_POSTER)) {
-                File currentImage = new File(downloadFolder + currentImageName);
-                currentImage.delete();
-            }
+            deleteMoviePoster(editedMovie, downloadPath);
 
-            part.write(downloadFolder + fileName);
+            part.write(downloadPath + fileName);
 
             editedMovie.setImage(
-                MovieAddingHandler.DOWNLOAD_DIR + "/" + fileName);
+                MovieAddingHandler.DOWNLOAD_FOLDER + "/" + fileName);
         }
 
         Map<String, Genre> existingGenres = new GenreDao().getAll()
@@ -72,5 +65,19 @@ public class MovieEditHandler extends HttpServlet {
         new MovieDao().update(editedMovie);
 
         response.sendRedirect("movies");
+    }
+
+    public static boolean deleteMoviePoster(Movie movie, String downloadPath) {
+        boolean isDeleted = false;
+        String currentImageName = movie.getImage().split("/")[1];
+        
+        // If the current image is not the default image, 
+        // delete it from the server.
+        if (!currentImageName.equals(MovieAddingHandler.DEFAULT_POSTER)) {
+            File currentImage = new File(downloadPath + currentImageName);
+            isDeleted = currentImage.delete();
+        }
+        
+        return isDeleted;
     }
 }

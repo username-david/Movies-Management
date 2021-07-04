@@ -5,6 +5,9 @@
   <head>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/movies.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/movieCard.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
   </head>
 
   <body>
@@ -26,9 +29,10 @@
     <div id="btn-div">
       <!-- <%-- For checking whether to show the button or not. --%> -->
       <core:if test="${isValidUser}">
-        <button id="l-btn" onclick="location.href='addingForm.show'">
-          Add a movie
-        </button>
+        <form action="addingForm.show" method="post">
+          <input type="hidden" name="isValidUser" value="${isValidUser}">
+          <input id="l-btn" type="submit" value="Add a movie">
+        </form>
       </core:if>
 
       <!-- <%-- Genre selection. --%> -->
@@ -44,39 +48,48 @@
     <!-- <%-- Color bar. --%> -->
     <div id="b-div"></div>
     
+    <core:set var="movieListSize" value="${fn:length(movies)}"/>
     <table class="align-text">
-      <!-- <%-- For iterating the movies. --%> -->
-      <core:forEach var="movie" items="${movies}" varStatus="movieLoopCount" >
-        <!-- <%-- For getting the rating of a particular movie. --%> -->
-        <core:set var="rating" value="${movie.avgRating}"/>
-        
-        <!-- <%-- For showing only four movies per row. --%> -->
-        <core:if test="${movieLoopCount.count-1 % 4 == 0}">
-          <tr>
-        </core:if>
+      <core:choose>
+        <core:when test="${movieListSize == 0}">
+          <h1 class="page_notification">No movies currently.</h1>
+        </core:when>
+        <core:otherwise>
+          <!-- <%-- For iterating the movies. --%> -->
+          <core:forEach var="movie" items="${movies}" varStatus="movieLoopCount" >
+            <!-- <%-- For getting the rating of a particular movie. --%> -->
+            <core:set var="rating" value="${movie.avgRating}"/>
+            
+            <!-- <%-- For showing only four movies per row. --%> -->
+            <core:if test="${movieLoopCount.count-1 % 4 == 0}">
+              <tr>
+            </core:if>
 
-        <td id="td1">
-          <!-- <%--
-            For passing the current movie's information to a movie card and import it.
-          --%> -->
-          <core:import url="/movieCard.jsp">
-            <core:param name="id" value='${movie.id}'/>
-            <core:param name="name" value='${movie.name}'/>
-            <core:param name="image" value='${movie.image}'/>
-            <core:param name="rating" value='${rating}'/>
-          </core:import>
-        </td>
+            <td id="td1">
+              <!-- <%--
+                For passing the current movie's information to a movie card and import it.
+              --%> -->
+              <core:import url="/movieCard.jsp">
+                <core:param name="isValidUser" value='${isValidUser}'/>
+                <core:param name="id" value='${movie.id}'/>
+                <core:param name="name" value='${movie.name}'/>
+                <core:param name="image" value='${movie.image}'/>
+                <core:param name="rating" value='${rating}'/>
+              </core:import>
+            </td>
 
-        <!-- <%-- For showing only four movies per row. --%> -->
-        <core:if test="${movieLoopCount.count % 4 == 0}">
-          </tr>
-        </core:if>
-      </core:forEach>
+            <!-- <%-- For showing only four movies per row. --%> -->
+            <core:if test="${movieLoopCount.count % 4 == 0}">
+              </tr>
+            </core:if>
+          </core:forEach>
 
-      <!-- <%-- For showing only four movies per row. --%> -->
-      <core:if test="${fn:length(movies) % 4 != 0}">
-        </tr>
-      </core:if>
+          <!-- <%-- For showing only four movies per row. --%> -->
+          <core:if test="${movieListSize % 4 != 0}">
+            </tr>
+          </core:if>
+        </core:otherwise>
+      </core:choose>
     </table>
   </body>
 </html>

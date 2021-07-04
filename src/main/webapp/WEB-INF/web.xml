@@ -42,14 +42,12 @@
     <web-resource-collection>
       <web-resource-name>Movie Adding Form Request</web-resource-name>
       <url-pattern>/addingForm.show</url-pattern>
-      <http-method>GET</http-method>
       <http-method>POST</http-method>
     </web-resource-collection>
 
     <web-resource-collection>
       <web-resource-name>Movie Edit Form Request</web-resource-name>
       <url-pattern>/editForm.show</url-pattern>
-      <http-method>GET</http-method>
       <http-method>POST</http-method>
     </web-resource-collection>
 
@@ -62,6 +60,12 @@
     <web-resource-collection>
       <web-resource-name>Movie Edit</web-resource-name>
       <url-pattern>/edit.do</url-pattern>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    
+    <web-resource-collection>
+      <web-resource-name>Movie Deleting</web-resource-name>
+      <url-pattern>/delete.do</url-pattern>
       <http-method>POST</http-method>
     </web-resource-collection>
     
@@ -147,6 +151,16 @@
   <servlet-mapping>
     <servlet-name>Movie Edit</servlet-name>
     <url-pattern>/edit.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- This servlet is for deleting an existing movie in the database. -->
+  <servlet>
+    <servlet-name>Movie Deleting</servlet-name>
+    <servlet-class>com.example.management.controller.MovieDeletingHandler</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Movie Deleting</servlet-name>
+    <url-pattern>/delete.do</url-pattern>
   </servlet-mapping>
 
 </web-app>

@@ -8,6 +8,11 @@
   </head>
 
   <body>
+    <!-- <%-- Header and log in/out button. --%> -->
+    <core:import url="/header.jsp">
+      <core:param name="isValidUser" value='${isValidUser}'/>
+    </core:import>
+
     <h1 id="page_name">${formType} Movie</h1>
     <div id="whole">
 
@@ -128,6 +133,7 @@
     text-align: center;
     font-family: cursive;
     font-size: 45px;
+    margin-top: 20px;
     margin-bottom: 20px;
   }
   label {
@@ -173,6 +179,81 @@
   }
   #same_font {
     font-family: cursive;
+  }
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .header {
+    overflow: hidden;
+    background-color: #e5e2e2;
+    padding-bottom: 10px;
+  }
+
+  .header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 20px;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+
+  .header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+  }
+
+  .favicon {
+    width: auto;
+    height: 50px;
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .header a.active {
+    background-color: dodgerblue;
+    color: white;
+    margin-top: 20px;
+    margin-right: 10px;
+  }
+
+  .header-right {
+    float: right;
+  }
+
+  @media screen and (max-width: 500px) {
+    .header a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+
+    .header-right {
+      float: none;
+    }
+  }
+
+  .slogan {
+    position: absolute;
+    line-height: 1;
+    top: 70px;
+    font-size: 1.0em;
+    font-style: italic;
+    color: #111010;
+    letter-spacing: 0px;
+    margin-left: 50px;
   }
 </style>
 
