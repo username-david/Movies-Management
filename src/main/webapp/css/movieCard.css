@@ -6,7 +6,7 @@ td {
   padding: 0;
   border: none;
 }
-button {
+button, .button {
   width: 91px;
   border-radius: 0;
   border: 2px solid black;
@@ -14,13 +14,13 @@ button {
 #rate-btn {
   background-color: cornflowerblue;
 }
-#delete-btn {
-  width: 102px;
-}
 .checked {
   color: orange;
 }
 img {
   height: 300px;
   width: 270px;
+}
+form {
+  margin: auto;
 }

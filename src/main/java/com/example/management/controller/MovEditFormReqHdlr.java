@@ -16,21 +16,16 @@ public class MovEditFormReqHdlr extends HttpServlet {
     private final String MOVIE = "movie";
     
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String requestParam_id = request.getParameter("id");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int movieId = Integer.parseInt(request.getParameter("movieId"));
 
-        if (requestParam_id == null) {
-            response.sendRedirect("movies");
-        } else {
-            int movieId = Integer.parseInt(requestParam_id);
-
-            Movie movie = new MovieDao().getById(movieId);
-            MovieDto movieDto = MovieMapper.from(movie);
-            
-            request.setAttribute(MovAddingFormReqHdlr.FORM_TYPE, EDIT);
-            request.setAttribute(MOVIE, movieDto);
-            request.getRequestDispatcher(MovAddingFormReqHdlr.MOVIE_ADDING_FORM)
-                .forward(request, response);
-        }
+        Movie movie = new MovieDao().getById(movieId);
+        MovieDto movieDto = MovieMapper.from(movie);
+        
+        request.setAttribute(MovAddingFormReqHdlr.IS_VALID_USER, request.getParameter("isValidUser"));
+        request.setAttribute(MovAddingFormReqHdlr.FORM_TYPE, EDIT);
+        request.setAttribute(MOVIE, movieDto);
+        request.getRequestDispatcher(MovAddingFormReqHdlr.MOVIE_ADDING_FORM)
+            .forward(request, response);
     }
 }

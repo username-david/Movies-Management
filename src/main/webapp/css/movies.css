@@ -24,9 +24,15 @@ table, #td1 {
 #b-div {
   background-color: darkcyan; 
   height: 30px;
-  margin-top: 45px
+  margin-top: 30px
 }
 #t-h2 {
   display: inline-block; 
   margin: 0
+}
+.page_notification {
+  font-family: system-ui;
+  margin-top: 10%;
+  font-weight: lighter;
+  text-align: center;
 }
