@@ -11,6 +11,11 @@ table, #td1 {
 #r-btn, #r-slc {
   float: right;
 }
+.filter_btn {
+  float: right;
+  height: 18px;
+  margin-left: 10px;
+}
 #h-div {
   text-align: center;
   height: 20px;
@@ -18,6 +23,8 @@ table, #td1 {
 }
 #btn-div {
   margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
   padding-left: 20px;
   padding-right: 20px;
 }
