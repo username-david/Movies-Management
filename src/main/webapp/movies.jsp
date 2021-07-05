@@ -36,11 +36,33 @@
       </core:if>
 
       <!-- <%-- Genre selection. --%> -->
-      <form action="">
-        <select name="genres" id="r-slc">
-          <core:forEach var="genre" items="${genres}">
-            <option value="${genre.name}">${genre.name}</option>
-          </core:forEach>
+      <form action="movies" method="get">
+        <input class="filter_btn" type="submit" value="filter">
+
+        <select id="r-slc" name="genreSelection">
+          <core:choose>
+            <core:when test="${selectedGenre == All}">
+              <option value="All" selected>--All--</option>
+              <core:forEach var="usedGenre" items="${usedGenres}">
+                <core:set var="genreName" value="${usedGenre.name}"/>
+                <option value="${genreName}">${genreName}</option>
+              </core:forEach>
+            </core:when>
+            <core:otherwise>
+              <option value="All">--All--</option>
+              <core:forEach var="usedGenre" items="${usedGenres}">
+                <core:set var="genreName" value="${usedGenre.name}"/>
+                <core:choose>
+                  <core:when test="${selectedGenre == genreName}">
+                    <option value="${genreName}" selected>${genreName}</option>
+                  </core:when>
+                  <core:otherwise>
+                    <option value="${genreName}">${genreName}</option>
+                  </core:otherwise>
+                </core:choose>
+              </core:forEach>
+            </core:otherwise>
+          </core:choose>
         </select>
       </form>
     </div>
